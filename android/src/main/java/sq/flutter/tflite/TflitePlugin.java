@@ -654,7 +654,7 @@ public class TflitePlugin implements MethodCallHandler {
 
     RunSSDMobileNet(HashMap args, ByteBuffer imgData, int numResultsPerClass, float threshold, Result result) {
       super(args, result);
-      print(tfLite.get_output_details())
+      System.out.println(tfLite.get_output_details());
       this.num = tfLite.getOutputTensor(6).shape()[1];
       this.numResultsPerClass = numResultsPerClass;
       this.threshold = threshold;
