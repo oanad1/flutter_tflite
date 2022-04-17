@@ -659,7 +659,7 @@ public class TflitePlugin implements MethodCallHandler {
       System.out.println(Arrays.toString(tfLite.getOutputTensor(2).shape()));
       System.out.println(Arrays.toString(tfLite.getOutputTensor(3).shape()));
 
-      this.num = tfLite.getOutputTensor(1).shape()[1];
+      this.num = tfLite.getOutputTensor(0).shape()[1];
       this.numResultsPerClass = numResultsPerClass;
       this.threshold = threshold;
       this.outputLocations = new float[1][num][4];
@@ -667,10 +667,10 @@ public class TflitePlugin implements MethodCallHandler {
       this.outputScores = new float[1][num];
       this.inputArray = new Object[]{imgData};
 
-      outputMap.put(0, outputLocations);
-      outputMap.put(1, outputClasses);
-      outputMap.put(2, outputScores);
-      outputMap.put(3, numDetections);
+      outputMap.put(0, outputScores);
+      outputMap.put(1, outputLocations);
+      outputMap.put(2, numDetections);
+      outputMap.put(3, outputClasses);
 
       startTime = SystemClock.uptimeMillis();
     }
